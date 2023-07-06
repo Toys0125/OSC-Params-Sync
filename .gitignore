@@ -1,0 +1,6 @@
+*.csv
+config.json
+build/
+dist/
+*.spec
+notes.txt
