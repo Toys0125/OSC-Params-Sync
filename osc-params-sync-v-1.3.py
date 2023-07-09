@@ -121,11 +121,11 @@ def write_float(floatId, floatValue):
 			rows = list(reader)
 			
 			if len(rows) >= floatId:
-				rows[floatId-1] = [floatValue]
+				rows[floatId-1] = [round(floatValue,2)]
 			else:
 				logging.info(f"Writing more parameters")
 				rows.extend([[0]] * (floatId - len(rows) -1))  # Add empty rows if necessary
-				rows.append([floatValue])
+				rows.append([round(floatValue,2)])
 					
 	with open(f'{avatarid}.csv', 'w', newline='') as csvfile:
 		writer = csv.writer(csvfile)
@@ -137,7 +137,7 @@ def initialize_csv():
 		with open(f'{avatarid}.csv','x', newline='') as csvfile:
 			writer = csv.writer(csvfile)
 			writer.writerow('')
-
+	rows = [0.0]
 	with open(f'{avatarid}.csv', 'r') as csvfile:
 		reader = csv.reader(csvfile)
 		rows = list(reader)
