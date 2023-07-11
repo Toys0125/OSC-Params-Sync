@@ -85,8 +85,9 @@ def handle_float_value(address, *args):
 	OSC_FloatValue = args[1]
 	changingValue = True
 	logging.debug(f"remembering float value: {args[1]}")
-	thread = threading.Thread(target=changeDataRows) # Insurance that there will be atleast a thread after each change.
-	thread.start()
+	#thread = threading.Thread(target=changeDataRows) # Insurance that there will be atleast a thread after each change.
+	#thread.start()
+	changeDataRows() #So issue would cause a lag in setting the settings if it you hold the value for a bit. Hopefully prevents lag.
 	
 
 def changeDataRows():
