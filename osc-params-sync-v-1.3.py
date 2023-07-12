@@ -102,8 +102,9 @@ def changeDataRows():
 
 
 def handle_avatar_change(address, *args):
-	global avatarid, globalLock
+	global avatarid, globalLock, changingValue
 	avatarid=args[1]
+	changingValue = True
 	logging.info(f"Avatar id is:{args[1]}")
 	with globalLock:
 		initialize_csv()
@@ -112,6 +113,7 @@ def handle_avatar_change(address, *args):
 
 def write_float(floatId, floatValue):
 	global avatarid,globalLock
+	floatValue=round(floatValue,2)
 	logging.info(f"write_float given {floatId} {floatValue}")
 	
 	
@@ -125,14 +127,14 @@ def write_float(floatId, floatValue):
 			else:
 				logging.info(f"Writing more parameters")
 				rows.extend([[0]] * (floatId - len(rows) -1))  # Add empty rows if necessary
-				rows.append([round(floatValue,2)])
+				rows.append([floatValue])
 					
 	with open(f'{avatarid}.csv', 'w', newline='') as csvfile:
 		writer = csv.writer(csvfile)
 		writer.writerows(rows)
 
 def initialize_csv():
-	global numFloats, avatarid, rows
+	global numFloats, avatarid, rows, changingValue
 	if(not os.path.exists(f'{avatarid}.csv')):
 		with open(f'{avatarid}.csv','x', newline='') as csvfile:
 			writer = csv.writer(csvfile)
@@ -160,7 +162,7 @@ def initialize_csv():
 					rows[i] = [defaultValue]
 			else:
 				rows.append([defaultValue])
-
+	changingValue = False
 	with open(f'{avatarid}.csv', 'w', newline='') as csvfile:
 		writer = csv.writer(csvfile)
 		writer.writerows(rows)
