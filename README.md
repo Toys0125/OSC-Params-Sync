@@ -1,5 +1,4 @@
 ![OSC Params logo](./icon.svg)
-<img src="./icon.svg">
 # OSC-Params-Sync
 
 I've provided it as is and with no warranty of any kind.
