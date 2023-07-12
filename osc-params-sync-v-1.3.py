@@ -80,27 +80,26 @@ def handle_float_id(address, *args):
 			rows.extend([[0.0]] * (OSC_FloatId - len(rows)))  # Add empty rows if necessary
 			logging.debug(f"{len(rows)} rows and data of %s",rows)
 
+sendingValues = False
+
 def handle_float_value(address, *args):
-	global OSC_FloatValue, OSC_FloatId, changingValue
+	global OSC_FloatValue, OSC_FloatId, changingValue, sendingValues
 	OSC_FloatValue = args[1]
-	changingValue = True
 	logging.debug(f"remembering float value: {args[1]}")
 	#thread = threading.Thread(target=changeDataRows) # Insurance that there will be atleast a thread after each change.
 	#thread.start()
-	changeDataRows() #So issue would cause a lag in setting the settings if it you hold the value for a bit. Hopefully prevents lag.
+	if (not sendingValues): #Hopefully reducing lag when changing values.
+		sendingValues = True
+		changeDataRows() #So issue would cause a lag in setting the settings if it you hold the value for a bit. Hopefully prevents lag.
 	
 
 def changeDataRows():
-	global OSC_FloatValue, OSC_FloatId, globalLock, rows
-	with globalLock:
-		if len(rows) < OSC_FloatId:
-			logging.info(f"More parameters than expected")
-			rows.extend([[0.0]] * (OSC_FloatId - len(rows)))  # Add empty rows if necessary
-			logging.debug('Calculations is %s',(OSC_FloatId - len(rows)))
-			logging.debug(f"{len(rows)} rows and data of %s",rows)
+	global OSC_FloatValue, OSC_FloatId, sendingValues, changingValue
+	changingValue = True
+	send_message("/avatar/parameters/OPS_Id",OSC_FloatId)
+	send_message("/avatar/parameters/OPS_Float", OSC_FloatValue)
+	sendingValues = False
 
-		rows[OSC_FloatId-1] = [OSC_FloatValue]
-		send_message("/avatar/parameters/OPS_Id",OSC_FloatId)
 
 def handle_avatar_change(address, *args):
 	global avatarid, globalLock
