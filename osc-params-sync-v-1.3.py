@@ -64,7 +64,7 @@ def handle_float_id(address, *args):
 	# float id resets to 0 when a radial puppet menu was just closed. 
 	if args[1] == 0:
 		# Now we can save the last value to our csv.
-		logging.info(f"handle_float_id given args[1]: {args[1]}")
+		logging.info(f"changing id: {OSC_FloatId}")
 		write_float(OSC_FloatId, OSC_FloatValue)
 		changingValue = False
 		return
