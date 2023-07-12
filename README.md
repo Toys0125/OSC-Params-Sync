@@ -1,4 +1,4 @@
-![OSC Params logo](./icon.svg)
+![OSC Params logo](./assets/icon.svg)
 # OSC-Params-Sync
 
 I've provided it as is and with no warranty of any kind.
@@ -24,7 +24,15 @@ config.json
 ```
 Client IP is the computer VRChat is running on in most cases should be 127.0.0.1 or localhost.
 
+If your avatar sometimes would input the wrong data into the you params, you can try switching the packet order or increase the packetDelay.
 
+Example transition settings
+![Transition settings](./assets/Unity_Transition.png)
+
+Example animation settings
+![Animation settings](./assets/Unity_Animation.png)
+
+## Installation
 The Program can be run using the included binary in the Releases area.
 
 Requires Python 3 to be installed and in path.
