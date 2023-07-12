@@ -5,7 +5,7 @@ I've provided it as is and with no warranty of any kind.
 
 ## Credit
 
-Original Script by JayJay provided by Fuujin with the original page [here](https://fuuujin.gumroad.com/l/OSCParameterSync)
+Original Script by JayJay provided by Fuujin with the Fuujin's Gumroad page [https://fuuujin.gumroad.com/l/OSCParameterSync](https://fuuujin.gumroad.com/l/OSCParameterSync)
 
 ## Help Section
 
