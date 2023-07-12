@@ -18,7 +18,8 @@ config.json
     "clientPort": 9000,
     "clientIp": "127.0.0.1",
     "packetDelay": 0.2,
-    "debugMode": false
+    "debugMode": false,
+    "switchPacketOrder": false
 }
 ```
 Client IP is the computer VRChat is running on in most cases should be 127.0.0.1 or localhost.
