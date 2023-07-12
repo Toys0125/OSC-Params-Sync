@@ -28,9 +28,15 @@ The Program can be run using the included binary in the Releases area.
 
 Requires Python 3 to be installed and in path.
 
+Requires Libary Python-OSC
+Install command
+```
+pip install python-osc
+```
+
 Run using command prompt in directory
 ```
-Python3 osc-params-sync-v-1.3.py
+Python3 osc-params-sync.py
 ```
 
 
