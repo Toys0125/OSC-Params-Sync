@@ -26,6 +26,16 @@ if (not os.path.exists('config.json')):
         json.dump(config, outfile, indent=2)
 else:
     config = json.load(open('config.json', 'r'))
+    config['serverPort'] = config['serverPort'] if config['serverPort'] else 9001
+    config['serverIp'] = config['serverIp'] if config['serverIp'] else '127.0.0.1'
+    config['clientPort'] = config['clientPort'] if config['clientPort'] else 9000
+    config['clientIp'] = config['clientIp'] if config['clientIp'] else '127.0.0.1'
+    config['packetDelay'] = config['packetDelay'] if config['packetDelay'] else 0.2
+    config['debugMode'] = config['debugMode'] if config.get('debugMode')!= None else False
+    config['switchPacketOrder'] = config['switchPacketOrder'] if config.get('switchPacketOrder')!= None else False
+    with open('config.json', 'w+') as outfile:
+        json.dump(config, outfile, indent=2)
+    
 if (config['debugMode']):
     logging.basicConfig(level=logging.DEBUG)
 else:
