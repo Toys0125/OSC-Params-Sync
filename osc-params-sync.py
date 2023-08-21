@@ -8,6 +8,7 @@ import threading
 import sys
 import csv
 import time
+from datetime import datetime
 import os
 import logging
 import json
@@ -37,7 +38,7 @@ else:
         json.dump(config, outfile, indent=2)
     
 if (config['debugMode']):
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(filename=datetime.now().strftime('OSCParams_%H_%M_%d_%m_%Y.log'), encoding='utf-8',level=logging.DEBUG)
 else:
     logging.basicConfig(level=logging.INFO)
 

@@ -6,3 +6,4 @@ dist/
 notes.txt
 venv/
 .vscode/
+*.log
