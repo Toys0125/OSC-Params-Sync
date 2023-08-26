@@ -48,4 +48,7 @@ Run using command prompt in directory
 Python3 osc-params-sync.py
 ```
 
+## Troubleshooting
+If OSC Params Sync is logging Avatar Id changes when you change avatars but doesn't show any changes when you change values within VRC, reset your OSC config for your avatar. If that doesn't work, delete the avatarid.json in `%appdata%\..\LocalLow\VRChat\VRChat\OSC`->usr_hash\Avatars\avtr_hash.json. Then turn off and on OSC within VRC to have it regenerate the config for your avi.
 
+If that doesn't work, check if you have any scramblers on your avatar that affecting your parameters, or if you named them incorrectly in your parameters.
